@@ -23,51 +23,57 @@ namespace ft {
 	typedef ft::integral_constant<bool, false>	false_type;
 
 
-	template< typename >
-    struct _is_integral_helper : public ft::false_type { };
-
-	template<>
-	struct _is_integral_helper<bool> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<char> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<signed char> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<unsigned char> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<wchar_t> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<short> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<unsigned short> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<int> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<unsigned int> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<long> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<unsigned long> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<long long> : public ft::true_type { };
-
-	template<>
-	struct _is_integral_helper<unsigned long long> : public ft::true_type { };
-
+	template< class >
+    struct is_integral : public ft::false_type { };
 
 	template< class T >
-	struct is_integral : public ft::_is_integral_helper<T>::type { };
+	struct is_integral<const T> : public ft::is_integral<T> { };
+
+	template< class T >
+	struct is_integral<const volatile T> : public ft::is_integral<T> { };
+
+	template< class T >
+	struct is_integral<volatile T> : public ft::is_integral<T> { };
+
+
+	template<>
+	struct is_integral<bool> : public ft::true_type { };
+
+	template<>
+	struct is_integral<char> : public ft::true_type { };
+
+	template<>
+	struct is_integral<signed char> : public ft::true_type { };
+
+	template<>
+	struct is_integral<unsigned char> : public ft::true_type { };
+
+	template<>
+	struct is_integral<wchar_t> : public ft::true_type { };
+
+	template<>
+	struct is_integral<short> : public ft::true_type { };
+
+	template<>
+	struct is_integral<unsigned short> : public ft::true_type { };
+
+	template<>
+	struct is_integral<int> : public ft::true_type { };
+
+	template<>
+	struct is_integral<unsigned int> : public ft::true_type { };
+
+	template<>
+	struct is_integral<long> : public ft::true_type { };
+
+	template<>
+	struct is_integral<unsigned long> : public ft::true_type { };
+
+	template<>
+	struct is_integral<long long> : public ft::true_type { };
+
+	template<>
+	struct is_integral<unsigned long long> : public ft::true_type { };
 
 
 	// Primary template.

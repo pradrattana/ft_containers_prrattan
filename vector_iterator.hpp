@@ -14,7 +14,7 @@ namespace ft {
 		typedef typename ft::iterator_traits<Iter>::pointer				pointer;
 		typedef typename ft::iterator_traits<Iter>::reference			reference;
 
-		vector_iterator() { }
+		vector_iterator() : current() { }
 
 		explicit
 		vector_iterator( iterator_type x ) : current(x) { }
