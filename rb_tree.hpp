@@ -153,6 +153,10 @@ namespace ft {
 			return _M_insert_(res.first, res.second, value);
 		}
 
+		const_iterator	insert_unique( const_iterator pos, const_reference value ) {
+			return insert_unique(pos._M_const_cast(), value);
+		}
+
 		template< class InputIt >
 		void	insert_range_unique( InputIt first, InputIt last ) {
 			while (first != last)
@@ -225,6 +229,9 @@ namespace ft {
 			_node_count--;
 
 		}
+		void	erase( const_iterator pos ) {
+			erase(pos._M_const_cast());
+		}
 
 		void	erase( iterator first, iterator last ) {
 			if (first == begin() && last == end())
@@ -232,6 +239,10 @@ namespace ft {
 			else
 				while (first != last)
 					erase(first++);
+		}
+
+		void	erase( const_iterator first, const_iterator last ) {
+			erase(first._M_const_cast(), last._M_const_cast());
 		}
 
 		size_type	erase(const key_type& key) {

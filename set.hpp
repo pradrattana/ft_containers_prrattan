@@ -13,13 +13,10 @@
 # include "utility.hpp"
 
 namespace ft {
-	template< class _T >
-	struct _Identity : public std::unary_function<_T, _T> {
-		_T&	operator()(_T& __x) const
-		{ return __x; }
-
-		const _T&	operator()(const _T& __x) const
-		{ return __x; }
+	template< class T >
+	struct _Identity : public std::unary_function<T, T> {
+		T&			operator()(T& x) const { return x; }
+		const T&	operator()(const T& x) const { return x; }
 	};
 
 	template<
@@ -51,9 +48,9 @@ namespace ft {
 		typedef typename _Key_alloc_type::const_reference	const_reference;
 		typedef typename _Key_alloc_type::pointer			pointer;
 		typedef typename _Key_alloc_type::const_pointer		const_pointer;
-		typedef typename _Rep_type::iterator				iterator;
+		typedef typename _Rep_type::const_iterator				iterator;
 		typedef typename _Rep_type::const_iterator			const_iterator;
-		typedef typename _Rep_type::reverse_iterator		reverse_iterator;
+		typedef typename _Rep_type::const_reverse_iterator		reverse_iterator;
 		typedef typename _Rep_type::const_reverse_iterator	const_reverse_iterator;
 
 		set() {}

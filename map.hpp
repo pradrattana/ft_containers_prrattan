@@ -14,13 +14,13 @@
 # include "utility.hpp"
 
 namespace ft {
-	template< class _Pair >
-	struct _Select1st : public std::unary_function<_Pair, typename _Pair::first_type> {
-		typename _Pair::first_type&	operator()(_Pair& __x) const
-		{ return __x.first; }
+	template< class Pair >
+	struct _Select1st : public std::unary_function<Pair, typename Pair::first_type> {
+		typename Pair::first_type&	operator()(Pair& x) const
+		{ return x.first; }
 
-		const typename _Pair::first_type&	operator()(const _Pair& __x) const
-		{ return __x.first; }
+		const typename Pair::first_type&	operator()(const Pair& x) const
+		{ return x.first; }
 	};
 
 	template<
